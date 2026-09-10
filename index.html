@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погодный Дашборд</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Погодный Дашборд</h1>
+            <p class="subtitle">Получайте актуальные данные о погоде в реальном времени</p>
+        </header>
+
+        <div class="search-section">
+            <input 
+                type="text" 
+                id="cityInput" 
+                placeholder="Введите название города..."
+                autocomplete="off"
+            >
+            <button id="searchBtn" class="btn-primary">🔍 Поиск</button>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Загрузка данных...</p>
+        </div>
+
+        <div id="weatherContent" style="display: none;">
+            <!-- Текущая погода -->
+            <section class="current-weather">
+                <div class="weather-header">
+                    <div class="city-info">
+                        <h2 id="cityName"></h2>
+                        <p id="lastUpdate" class="last-update"></p>
+                    </div>
+                    <div class="current-temp">
+                        <span id="temperature" class="temp-value"></span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                </div>
+
+                <div class="weather-description">
+                    <img id="weatherIcon" src="" alt="Weather icon" class="weather-icon-large">
+                    <div>
+                        <p id="description" class="description-text"></p>
+                        <p id="feelsLike" class="feels-like"></p>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-label">💧 Влажность</span>
+                        <span id="humidity" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">💨 Ветер</span>
+                        <span id="windSpeed" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🔽 Давление</span>
+                        <span id="pressure" class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">👁️ Видимость</span>
+                        <span id="visibility" class="detail-value"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Прогноз на 5 дней -->
+            <section class="forecast-section">
+                <h3>📅 Прогноз на 5 дней</h3>
+                <div id="forecastContainer" class="forecast-container"></div>
+            </section>
+
+            <!-- Почасовой прогноз -->
+            <section class="hourly-section">
+                <h3>⏰ Почасовой прогноз</h3>
+                <div id="hourlyContainer" class="hourly-container"></div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>Данные от <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a> | 2024</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
